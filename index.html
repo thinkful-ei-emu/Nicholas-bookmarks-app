@@ -2,31 +2,35 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Bookmarks App</title>
-        <meta name="description" content="">
+        <meta name="description" content="Collect Bookmarks with this App">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" href="#">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="styles/index.css">
     </head>
 <body>
     <div class="container">
+        <div class='error-pop hidden'>
+            <p class='error-message'></p>
+            <button type='submit' class='error-close'>✖</button>
+        </div>
         <h1>My Bookmarks</h1>
         <div class="bookmark-item-controls">
             <form id="add-bookmark-button-form">
-                <button class="add-bookmark js-add-bookmark" type="submit">Add Bookmark</button>
+                <button class="add-bookmark js-add-bookmark top-button" type="submit">Add Bookmark</button>
             </form>
-            <div class="contain-bookmark-form"></div>
             <form id="bookmark-filter-controls">
-                <button class="js-filter-button">Filter by Rating</button>
-                <input class="filter-bookmark js-filter-bookmark" type="number" min="1" max="5">
+                <button class="js-filter-button top-button">Filter by Rating</button>
+                <input class="filter-bookmark js-filter-bookmark" type="number" min="1" max="5" placeholder="1">
             </form>
         </div>
+        <div class="contain-bookmark-form container"></div>
         <ul class="bookmarks js-bookmarks"></ul>
     </div>
     

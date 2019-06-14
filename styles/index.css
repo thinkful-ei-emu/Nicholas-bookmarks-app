@@ -1,7 +1,51 @@
 * {
     box-sizing: border-box;
   }
+
+  body {
+    background-image: 
+      url(https://i.imgur.com/L3EnscD.png);
+  }
   
+  h1 {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    color: #808080;
+    text-decoration: underline;
+    text-decoration-color: rgb(165, 167, 184);
+  }
+
+  .contain-bookmark-form {
+    display: flex;
+    justify-content: center;
+  }
+
+  .bookmark-item-controls {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+
+  }
+
+  .top-button {
+    margin-right: 5px;
+  }
+
+  .item-form{
+    margin: 5px;
+  }
+
+  form > input {
+    background-color: rgb(235, 235, 235);
+    margin: 3px;
+  }
+
+  .filter-bookmark{
+    width: 30px;
+    background-color: rgb(235, 235, 235);
+  }
+
   body {
     font-family: 'Roboto', sans-serif;
   }
@@ -38,6 +82,8 @@
   
   .bookmarks > li {
     margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
     border: 1px solid grey;
     padding: 20px;
   }

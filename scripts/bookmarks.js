@@ -13,8 +13,8 @@ const bookmarks = (function () {
       return `<li class="js-bookmark-element bookmark-element" data-item-id="${item.id}">
           ${item.title}
           <br>
-          <p>Rating:${item.rating}</p>
-          <div class="bookmark-item-controls">
+          <p>Rating: ${item.rating}</p>
+          <div class="bookmark-item-buttons">
           <button class="js-item-condense" type="button">
               <span class="button-label">Expand<span>
           </button>
@@ -26,10 +26,11 @@ const bookmarks = (function () {
       `;
     }
     return `<li class="js-bookmark-element bookmark-element" data-item-id="${item.id}">
-            ${item.title}  <span><a href="${item.url}">Visit Link</a></span>
-            <p>Rating:${item.rating}</p>
-            <p>${item.desc}</p>
-            <div class="bookmark-item-controls">
+            ${item.title}  
+            <p>Rating: ${item.rating}</p>
+            <p>Description: ${item.desc}</p>
+            <p><a href="${item.url}">Visit Link</a></p>
+            <div class="bookmark-item-buttons">
             <button class="js-item-condense" type="button">
                 <span class="button-label">Collapse<span>
             </button>
@@ -56,24 +57,25 @@ const bookmarks = (function () {
     $('.contain-bookmark-form').empty();
     if (store.isAdding){
       $('.contain-bookmark-form').append(
-        `<form id="add-item-form">
+        `<form id="add-item-form" class="item-form">
           Title:
-          <input type="text" id="title-input" name="title" required><br>
+          <input type="text" id="title-input" name="title" placeholder="ex: Google" required><br>
           Url:
-          <input type="text" id="url-input" name="url" required><br>
+          <input type="text" id="url-input" name="url" placeholder="https://" required><br>
           Rating:
-          <input type="number" id="rating-input" min="1" max="5" required><br>
+          <input type="number" id="rating-input" min="1" max="5" placeholder="1" required><br>
           Description:
-          <input type="text" id="description-input" name="description" required><br>
+          <input type="text" id="description-input" name="description" placeholder="description..." required><br>
           <button type="submit">Add to list</button>
       </form>`
       );
     
     }
     let items = [...store.items];
-    // if (store.isFiltering){
-    //   items = filteredItems;
-    // }
+    if (store.isFiltering){
+      const filteredItems = store.items.filter(item => item.rating >= store.isFiltering);
+      items = filteredItems;
+    }
 
 
     // render the shopping list in the DOM
@@ -123,20 +125,19 @@ const bookmarks = (function () {
       render();
     });
   }
-
+  
   function filterByRating(){
     $('#bookmark-filter-controls').submit(event => {
       event.preventDefault();
       const rating = $('.js-filter-bookmark').val();
-      // store.setItemIsFiltered(rating);
-      // store.isFiltering = true;
-      
-      const filteredItems = store.items.filter(item => item.rating >= rating);
-      store.items = filteredItems;
-      // return filteredItems,
-      render();
+      store.isFiltering = Number(rating);
+      render();   
     });
+     
   }
+  
+  
+  
 
 
   function handleNewItemSubmit() {
