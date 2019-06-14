@@ -19,7 +19,17 @@ const store = (function(){
     this.items = this.items.filter(item => item.id !== id);
   };
   
-  
+
+//   const setItemIsFiltered = function(rating){
+//     if (this.items.isFiltered === undefined){
+//       this.items.isFiltered = false;
+//     }
+//     if (this.items.rating < rating){
+//       this.items.isFiltered = true;
+//     } else {
+//       this.items.isFiltered = false;
+//     }
+//   };
   
   const setItemIsCondensed = function(id) {
     const item = this.findById(id);
@@ -40,12 +50,14 @@ const store = (function(){
     isAdding: false,
     searchTerm: '',
     errorKey : '',
+    // isFiltering: false,
     addItem,
     findById,
     findAndDelete,
     findAndUpdate,
     setSearchTerm,
     setItemIsCondensed,
+    // setItemIsFiltered
   };
     
 }());

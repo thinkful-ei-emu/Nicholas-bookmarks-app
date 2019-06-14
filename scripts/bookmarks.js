@@ -5,6 +5,10 @@
 const bookmarks = (function () {
 
   function generateItemElement(item) {
+    // if (item.isFiltered){
+    //   return '';
+    // }
+    
     if (item.isCondensed !== false){
       return `<li class="js-bookmark-element bookmark-element" data-item-id="${item.id}">
           ${item.title}
@@ -45,7 +49,6 @@ const bookmarks = (function () {
 
 
   function render() {
-    // Filter item list if store prop is true by item.checked === false
     if (store.errorKey) {
       $('.error-message').append(`${store.errorKey} <br>`);
       $('.error-pop').removeClass('hidden');
@@ -68,6 +71,9 @@ const bookmarks = (function () {
     
     }
     let items = [...store.items];
+    // if (store.isFiltering){
+    //   items = filteredItems;
+    // }
 
 
     // render the shopping list in the DOM
@@ -114,6 +120,20 @@ const bookmarks = (function () {
       event.preventDefault();
       const id = getItemIdFromElement(event.currentTarget);
       store.setItemIsCondensed(id);
+      render();
+    });
+  }
+
+  function filterByRating(){
+    $('#bookmark-filter-controls').submit(event => {
+      event.preventDefault();
+      const rating = $('.js-filter-bookmark').val();
+      // store.setItemIsFiltered(rating);
+      // store.isFiltering = true;
+      
+      const filteredItems = store.items.filter(item => item.rating >= rating);
+      store.items = filteredItems;
+      // return filteredItems,
       render();
     });
   }
@@ -167,6 +187,8 @@ const bookmarks = (function () {
     expandBookmarkForm();
     handleItemDelete();
     handleCondensedItem();
+    filterByRating();
+    
   }
 
   // This object contains the only exposed methods from this module:
