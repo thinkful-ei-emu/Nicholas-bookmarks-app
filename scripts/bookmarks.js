@@ -22,9 +22,7 @@ const bookmarks = (function () {
       `;
     }
     return `<li class="js-bookmark-element bookmark-element" data-item-id="${item.id}">
-            ${item.title}
-            <br>
-            <a href="${item.url}">Visit Link</a>
+            ${item.title}  <span><a href="${item.url}">Visit Link</a></span>
             <p>Rating:${item.rating}</p>
             <p>${item.desc}</p>
             <div class="bookmark-item-controls">
@@ -90,7 +88,7 @@ const bookmarks = (function () {
   function expandBookmarkForm() {
     $('#add-bookmark-button-form').submit(event => {
       event.preventDefault();
-      store.isAdding = true;
+      store.isAdding = !store.isAdding;
       render();
     });
   }
