@@ -20,9 +20,15 @@ const store = (function(){
   };
   
   
-  const setItemIsEditing = function(id, isEditing) {
+  
+  const setItemIsCondensed = function(id) {
     const item = this.findById(id);
-    item.isEditing = isEditing;
+    if (item.isCondensed === undefined){
+      item.isCondensed = false;
+    } else {
+      item.isCondensed = !item.isCondensed;  
+    }
+    
   };
   
   const setSearchTerm = function(term) {
@@ -39,7 +45,7 @@ const store = (function(){
     findAndDelete,
     findAndUpdate,
     setSearchTerm,
-    setItemIsEditing,
+    setItemIsCondensed,
   };
     
 }());

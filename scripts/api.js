@@ -32,10 +32,12 @@ const Api = (function(){
     return listApiFetch(`${BASE_URL}bookmarks`);
   };
   
-  const createItem = function(title, url){
+  const createItem = function(title, url, rating, desc){
     const newItem= JSON.stringify({
       title,
       url,
+      rating,
+      desc
     });
     const options={
       method:'POST',
