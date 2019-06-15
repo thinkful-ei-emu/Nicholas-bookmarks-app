@@ -5,10 +5,6 @@
 const bookmarks = (function () {
 
   function generateItemElement(item) {
-    // if (item.isFiltered){
-    //   return '';
-    // }
-    
     if (item.isCondensed !== false){
       return `<li class="js-bookmark-element bookmark-element" data-item-id="${item.id}">
           ${item.title}
