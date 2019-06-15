@@ -171,7 +171,6 @@ const bookmarks = (function () {
   function handleCloseErrorPop() {
     $('.error-pop').on('click', '.error-close', (e) => {
       e.preventDefault();
-      console.log($(e.delegateTarget));
       $(e.delegateTarget).addClass('hidden');
       $(e.delegateTarget).children('p').html('');
       store.errorKey = '';

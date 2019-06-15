@@ -76,6 +76,6 @@ const Api = (function(){
 }());
 
 
-console.log(Api.getItems());
+
 
 

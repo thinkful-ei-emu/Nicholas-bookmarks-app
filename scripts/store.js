@@ -25,25 +25,19 @@ const store = (function(){
       item.isCondensed = false;
     } else {
       item.isCondensed = !item.isCondensed;  
-    }
-    
+    }  
   };
   
-  const setSearchTerm = function(term) {
-    this.searchTerm = term;
-  };
   
   return {
     items: [],
     isAdding: false,
-    searchTerm: '',
     errorKey : '',
     isFiltering: 1,
     addItem,
     findById,
     findAndDelete,
     findAndUpdate,
-    setSearchTerm,
     setItemIsCondensed,
   };
     
