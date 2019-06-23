@@ -16,6 +16,10 @@
     text-decoration-color: rgb(165, 167, 184);
   }
 
+  .checked {
+    color: orange;
+  }
+
   .contain-bookmark-form {
     display: flex;
     justify-content: center;

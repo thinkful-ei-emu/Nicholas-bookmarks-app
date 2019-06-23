@@ -43,4 +43,4 @@ const store = (function(){
     
 }());
   
-console.log(store.items);
+console.log(store.items.rating);

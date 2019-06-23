@@ -3,13 +3,53 @@
 // eslint-disable-next-line no-unused-vars
 
 const bookmarks = (function () {
-
+  let starMarkup;
+  function generateStarMarkup(item){
+    if (item.rating === 1){
+      starMarkup = ` <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star "></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>`;
+    }
+    else if (item.rating === 2){
+      starMarkup = ` <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>`;
+    }
+    else if (item.rating === 3){
+      starMarkup = ` <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>`;
+    }
+    else if (item.rating === 4){
+      starMarkup = ` <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>`;
+    }
+    else {
+      starMarkup = ` <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>`;
+    }
+  }
+  
+  
   function generateItemElement(item) {
+    generateStarMarkup(item);
     if (item.isCondensed !== false){
       return `<li class="js-bookmark-element bookmark-element" data-item-id="${item.id}">
           ${item.title}
           <br>
-          <p>Rating: ${item.rating}</p>
+          <p>Rating: ${starMarkup}</p>
           <div class="bookmark-item-buttons">
           <button class="js-item-condense" type="button">
               <span class="button-label">Expand<span>
@@ -23,7 +63,7 @@ const bookmarks = (function () {
     }
     return `<li class="js-bookmark-element bookmark-element" data-item-id="${item.id}">
             ${item.title}  
-            <p>Rating: ${item.rating}</p>
+            <p>Rating: ${starMarkup}</p>
             <p>Description: ${item.desc}</p>
             <p><a href="${item.url}">Visit Link</a></p>
             <div class="bookmark-item-buttons">
@@ -193,3 +233,4 @@ const bookmarks = (function () {
     bindEventListeners: bindEventListeners,
   };
 }());
+
